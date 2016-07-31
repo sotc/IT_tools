@@ -1,23 +1,26 @@
 # nginx config file
 
 server {
-    listen 80;
-    server_name localhost;
+    listen 80 default_server;
+    listen [::]:80 default_server;
     
     root /var/www/html/;
-    index index.php index.html info.php;
+    index index.php index.html info.php index.nginx-debian.html;
     
-    location / {
-        try_files $uri $uri/ /index.html;
-    }
+server_name _;
+
+location / {
+
+    try_files $uri $uri/ =404;
+}
+    # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
+    #
+location ~ \.php$ {
+    include snippets/fastcgi-php.conf;
+    With php7.0-cgi alone:
+    fastcgi_pass 127.0.0.1:9000;
+    With php7.0-fpm:
+    fastcgi_pass unix:/run/php/php7.0-fpm.sock;
+}
     
-    location ~ \.php$ {
-        include fastcgi_params;
-        
-        fastcgi_pass unix:/var/run/php7-fpm.sock;
-        
-        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-        fastcgi_cache off;
-        fastcgi_index index.php info.php;
-    }
 }
