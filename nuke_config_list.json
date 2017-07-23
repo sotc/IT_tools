@@ -1,0 +1,22 @@
+{
+	"location": {
+		"source": "/tmp/",
+		"bucket": "nuke-installer",
+		"nuke_exec": "/usr/local/Nuke10.0v4/Nuke10.0"
+	},
+
+	"nuke": {
+		"install": "Nuke10.0v4-linux-x86-release-64-installer",
+		"flu": "FoundryLicenseUtility"
+	},
+
+  "sys_path": {
+    "rlm_path": "/usr/local/foundry/RLM/",
+    "nuke_path": "/usr/local/Nuke10.0v4/"
+  },
+
+	"server_info": {
+		"lic_server": "4101@nuke-lic.server.io"
+	}
+
+}
