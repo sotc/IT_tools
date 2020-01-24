@@ -7,7 +7,7 @@ import json
 import boto3
 from boto3.s3.transfer import S3Transfer
 
-# Create transfer object
+# Create transfer object TEST
 client = boto3.client('s3', 'us-west-2')
 transfer = S3Transfer(client)
 
